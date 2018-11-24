@@ -70,11 +70,11 @@ j LOOP2
 
 LOOP2:
 bge $z1, $a3, END
-add $z1, $z1, 1
+addi $z1, $z1, 1
 j LOOP3
 
 LOOP3:
 bge $z2, 2, END
-add $z2, $z2, 1
+addi $z2, $z2, 1
 
 END:

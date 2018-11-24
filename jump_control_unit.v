@@ -6,7 +6,8 @@ input[3:0] func;
 
 output jumpcontrol;
 
-if({alu_op,func}==6'b001000)
+assign jumpcontrol = ({alu_op,func} == 6'b001000) ? 1'b1 : 1'b0;
+/*if({alu_op,func}==6'b001000)
 begin
   assign jumpcontrol = 1;
 end
@@ -14,5 +15,5 @@ else
 begin
   assign jumpcontrol = 0;
 end
-
+*/
 endmodule

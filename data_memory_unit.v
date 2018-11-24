@@ -1,4 +1,11 @@
-module data_memory_unit(input clk,input[15:0] address,input[15:0] write_data,input write_enable,input read_enable,output[15:0] read_data);
+module data_memory_unit(clk,address,write_data,write_enable,read_enable,read_data);
+
+input clk;
+input[15:0] address;
+input[15:0] write_data;
+input write_enable, read_enable;
+
+output[15:0] read_data;
 
   
 reg[31:0] main_memory[511:0];  

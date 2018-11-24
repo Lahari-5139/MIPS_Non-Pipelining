@@ -1,5 +1,11 @@
-module control_unit( input clk,input[5:0] opcode, input reset, output reg[1:0] reg_dst,memto_reg,alu_op, output reg jump,branch,mem_read,mem_write,alu_src,reg_write,sign_or_zero);  
+module control_unit(clk,opcode,reset,reg_dst,memto_reg,alu_op,jump,branch,mem_read,mem_write,alu_src,reg_write,sign_or_zero);  
  
+input clk;
+input [5:0] opcode;
+input reset;
+output reg[1:0] reg_dst, memto_reg, alu_op;
+output reg jump, branch, mem_read, mem_write, alu_src, reg_write, sign_or_zero;
+
 always @(posedge clk)  
 begin 
 

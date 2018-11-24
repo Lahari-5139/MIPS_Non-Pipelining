@@ -1,18 +1,17 @@
-module control_unit(clk,opcode,reset,reg_dst,memto_reg,alu_op,jump,branch,mem_read,mem_write,alu_src,reg_write,sign_or_zero);  
+module control_unit(clk,opcode,reg_dst,memto_reg,alu_op,jump,branch,mem_read,mem_write,alu_src,reg_write,sign_or_zero);  
  
 input clk;
 input [5:0] opcode;
-input reset;
-output reg[1:0] reg_dst, memto_reg, alu_op;
-output reg jump, branch, mem_read, mem_write, alu_src, reg_write, sign_or_zero;
+
+output reg[1:0] alu_op;
+output reg memto_reg,reg_dst,jump, branch, mem_read, mem_write, alu_src, reg_write, sign_or_zero;
 
 always @(posedge clk)  
 begin 
 
-if(reset == 1'b1) 
-begin
-reg_dst = 2'b00;  
-memto_reg = 2'b00;  
+//Default control signals
+reg_dst = 1'b0;  
+memto_reg = 1'b0;  
 alu_op = 2'b00;  
 jump = 1'b0;  
 branch = 1'b0;  
@@ -21,14 +20,11 @@ mem_write = 1'b0;
 alu_src = 1'b0;  
 reg_write = 1'b0;  
 sign_or_zero = 1'b1;  
-end  
-      
-else 
-begin  
+
     case(opcode)   
     6'b000000:  begin  //control lines for add instruction  
-                reg_dst = 2'b01;  
-                memto_reg = 2'b00;  
+                reg_dst = 1'b1;  
+                memto_reg = 1'b0;  
                 alu_op = 2'b00;  
                 jump = 1'b0;  
                 branch = 1'b0;  
@@ -51,6 +47,7 @@ begin
                 reg_write = 1'b0;  
                 sign_or_zero = 1'b1;  
                 end  
+
     6'b000011:  begin //control lines for jal instruction   
                 reg_dst = 2'b10;  
                 memto_reg = 2'b10;  
@@ -64,8 +61,8 @@ begin
                 sign_or_zero = 1'b1;  
                 end  
     6'b100011:  begin //control lines for lw instruction 
-                reg_dst = 2'b00;  
-                memto_reg = 2'b01;  
+                reg_dst = 1'b0;  
+                memto_reg = 1'b1;  
                 alu_op = 2'b11;  
                 jump = 1'b0;  
                 branch = 1'b0;  
@@ -76,8 +73,8 @@ begin
                 sign_or_zero = 1'b1;  
                 end  
     6'b101011:  begin //control lines for sw instruction 
-                reg_dst = 2'b00;  
-                memto_reg = 2'b00;  
+                reg_dst = 1'b0;  
+                memto_reg = 1'b0;  
                 alu_op = 2'b11;  
                 jump = 1'b0;  
                 branch = 1'b0;  
@@ -88,8 +85,8 @@ begin
                 sign_or_zero = 1'b1;  
                 end  
     6'b000100:  begin //control lines for beq instruction  
-                reg_dst = 2'b00;  
-                memto_reg = 2'b00;  
+                reg_dst = 1'b0;  
+                memto_reg = 1'b0;  
                 alu_op = 2'b01;  
                 jump = 1'b0;  
                 branch = 1'b1;  
@@ -99,10 +96,8 @@ begin
                 reg_write = 1'b0;  
                 sign_or_zero = 1'b1;  
                 end
-endcase  
-end  
-
-end  
+    endcase  
+end    
 
 
 endmodule  

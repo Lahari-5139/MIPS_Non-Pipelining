@@ -1,4 +1,4 @@
-module instruction_memory(pc, instruction);
+module instruction_memory(clk,pc, instruction);
 
 input[15:0] pc;
 

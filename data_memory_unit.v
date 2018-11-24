@@ -28,13 +28,6 @@ begin
   end  
 end  
 
-if(read_enable == 1)
-begin
-assign read_data = main_memory[main_address];
-end
-else
-begin
-assign read_data = 32'd0;
-end
- 
+assign read_data = (read_enable == 1'b1) ? main_memory[main_address]:32'd0;
+
 endmodule   

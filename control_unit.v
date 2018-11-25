@@ -33,17 +33,17 @@ reg_write = 1'b0;
                 reg_write = 1'b1;  
                 end  
         
-//     6'b000010:  begin //control lines for j instruction  
-//                 reg_dst = 2'b00;  
-//                 memto_reg = 2'b00;  
-//                 alu_op = 2'b00;  
-//                 jump = 1'b1;  
-//                 branch = 1'b0;  
-//                 mem_read = 1'b0;  
-//                 mem_write = 1'b0;  
-//                 alu_src = 1'b0;  
-//                 reg_write = 1'b0;   
-//                 end
+    6'b000010:  begin //control lines for j instruction  
+                reg_dst = 1'b0;  
+                memto_reg = 1'b0;  
+                alu_op = 2'b00;  
+                jump = 1'b1;  
+                branch = 1'b0;  
+                mem_read = 1'b0;  
+                mem_write = 1'b0;  
+                alu_src = 1'b0;  
+                reg_write = 1'b0;   
+                end
     6'b100011:  begin //control lines for lw instruction 
                 reg_dst = 1'b0;  
                 memto_reg = 1'b1;  

@@ -20,6 +20,28 @@ begin
         main_memory[i] <= 32'd0;  
 end  
 
+//matrix A
+main_memory[0] = 32'd1;
+main_memory[1] = 32'd2;
+main_memory[2] = 32'd3;
+main_memory[3] = 32'd1;
+main_memory[4] = 32'd2;
+main_memory[5] = 32'd3;
+main_memory[6] = 32'd1;
+main_memory[7] = 32'd2;
+main_memory[8] = 32'd3;
+
+//matrix B
+main_memory[9] = 32'd1;
+main_memory[10] = 32'd2;
+main_memory[11] = 32'd3;
+main_memory[12] = 32'd1;
+main_memory[13] = 32'd2;
+main_memory[14] = 32'd3;
+main_memory[15] = 32'd1;
+main_memory[16] = 32'd2;
+main_memory[17] = 32'd3;
+  
 always @(posedge clk) 
 begin  
   if(write_enable)

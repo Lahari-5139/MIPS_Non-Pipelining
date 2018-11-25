@@ -69,7 +69,7 @@ wire[15:0] read_data;
 //Module
 data_memory_unit Data_memory(clk,alu_result,read_data2,mem_write,mem_read,read_data);
 
-//Mux for writing back to register file
+//Mux for writing back to the register file
 assign write_data = (memto_reg == 1) ? read_data:alu_result;
 
 endmodule

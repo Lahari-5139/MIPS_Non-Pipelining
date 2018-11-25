@@ -11,22 +11,21 @@ wire[31:0] adder1;
 wire[31:0] adder2;
 wire[31:0] nxt;
 
-adder1 = pc+1;
-extended = extended << 2;
-adder2 = adder1+extended;
-wire sel;
-sel = branch & zero_flag;
-assign pc = sel ? adder2 : adder1;
+
 
 always @(posedge clk)
 begin
     if(reset)
         pc <= 31'd0;
     else
+        adder1 = pc+1;
+        extended = extended << 2;
+        adder2 = adder1+extended;
+        wire sel;
+        sel = branch & zero_flag;
+        pc = sel ? adder2 : adder1;
         pc_nxt <= pc;
-        // adder1 = pc_nxt+1;
-        // extended = extended << 2;
-        // adder2 = adder1+extended;
+        
 end
 endmodule
 

@@ -22,7 +22,7 @@ reg_write = 1'b0;
 sign_or_zero = 1'b1;  
 
     case(opcode)   
-    6'b000000:  begin  //control lines for add instruction  
+    6'b000000:  begin  //control lines for add/mult instruction  
                 reg_dst = 1'b1;  
                 memto_reg = 1'b0;  
                 alu_op = 2'b00;  
@@ -45,21 +45,7 @@ sign_or_zero = 1'b1;
                 mem_write = 1'b0;  
                 alu_src = 1'b0;  
                 reg_write = 1'b0;  
-                sign_or_zero = 1'b1;  
-                end  
-
-    6'b000011:  begin //control lines for jal instruction   
-                reg_dst = 2'b10;  
-                memto_reg = 2'b10;  
-                alu_op = 2'b00;  
-                jump = 1'b1;  
-                branch = 1'b0;  
-                mem_read = 1'b0;  
-                mem_write = 1'b0;  
-                alu_src = 1'b0;  
-                reg_write = 1'b1;  
-                sign_or_zero = 1'b1;  
-                end  
+                end 
     6'b100011:  begin //control lines for lw instruction 
                 reg_dst = 1'b0;  
                 memto_reg = 1'b1;  
@@ -70,7 +56,7 @@ sign_or_zero = 1'b1;
                 mem_write = 1'b0;  
                 alu_src = 1'b1;  
                 reg_write = 1'b1;  
-                sign_or_zero = 1'b1;  
+          
                 end  
     6'b101011:  begin //control lines for sw instruction 
                 reg_dst = 1'b0;  
@@ -82,7 +68,7 @@ sign_or_zero = 1'b1;
                 mem_write = 1'b1;  
                 alu_src = 1'b1;  
                 reg_write = 1'b0;  
-                sign_or_zero = 1'b1;  
+                 
                 end  
     6'b000100:  begin //control lines for beq instruction  
                 reg_dst = 1'b0;  
@@ -94,7 +80,7 @@ sign_or_zero = 1'b1;
                 mem_write = 1'b0;  
                 alu_src = 1'b0;  
                 reg_write = 1'b0;  
-                sign_or_zero = 1'b1;  
+                 
                 end
     endcase  
 end    

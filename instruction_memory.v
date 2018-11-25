@@ -11,8 +11,8 @@ reg[31:0] instr_memory[255:0];
 //MIPS assembly program in binary format
 initial 
 begin
-    instr_memory[0] <= 
-    instr_memory[1] <= 
+    instr_memory[0] <= 32'b10001100000000010000000000100000; 
+   /* instr_memory[1] <= 
     instr_memory[2] <= 
     instr_memory[3] <= 
     instr_memory[4] <= 
@@ -51,7 +51,7 @@ begin
     instr_memory[37] <= 
     instr_memory[38] <= 
     instr_memory[39] <= 
-    instr_memory[40] <= 
+    instr_memory[40] <= */
 end
 
 always @(posedge clk)

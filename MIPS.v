@@ -17,7 +17,6 @@ pc = pc_nxt;
 wire[31:0] instruction;
 instruction_memory IM(clk,pc,instruction);
 
-
 /*CONTROL UNIT*/
 //Wires required
 wire reg_dst, memto_reg, jump, branch, mem_read, mem_write, alu_src, reg_write;
@@ -67,9 +66,9 @@ data_memory_unit Data_memory(clk,alu_result,read_data2,mem_write,mem_read,read_d
 //Mux for writing back to the register file
 assign write_data = (memto_reg == 1) ? read_data:alu_result;
 
-wire pc_nxt;
+/*wire pc_nxt;
 pc pc(clk,reset,extended,branch,zero,pc,pc_nxt);
-pc = pc_nxt;
+pc = pc_nxt;*/
 
 endmodule
 

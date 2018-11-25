@@ -21,7 +21,7 @@ end
 wire[31:0] instruction;
 instruction_memory IM(clk,pc,instruction);
 
-wire 
+wire  
 control_unit Control(clk,instruction[31:26],reg_dst,memto_reg,alu_op,jump,branch,mem_read,mem_write,alu_src,reg_write,sign_or_zero);  
 
 

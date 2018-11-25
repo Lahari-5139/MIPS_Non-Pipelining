@@ -55,7 +55,7 @@ end
 
 always @(posedge clk)
 begin
-  if (RegWrite == 1) 
+  if (reg_write == 1) 
   begin
   all_registers[write_reg] <= write_data;
   end

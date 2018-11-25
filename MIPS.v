@@ -25,10 +25,10 @@ instruction_memory IM(clk,pc,instruction);
 
 /*CONTROL UNIT*/
 //Wires required
-wire reg_dst, memto_reg, jump, branch, mem_read, mem_write, alu_src, reg_write, sign_or_zero;
+wire reg_dst, memto_reg, jump, branch, mem_read, mem_write, alu_src, reg_write;
 wire[1:0] alu_op;
 //Module
-control_unit Control(clk,instruction[31:26],reg_dst,memto_reg,alu_op,jump,branch,mem_read,mem_write,alu_src,reg_write,sign_or_zero);  
+control_unit Control(clk,instruction[31:26],reg_dst,memto_reg,alu_op,jump,branch,mem_read,mem_write,alu_src,reg_write);  
 
 
 /*REGISTER FILE*/

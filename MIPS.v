@@ -52,13 +52,25 @@ alu_control_unit ALU_control(clk,instruction[5:0],alu_op,alu_control);
 
 /*ALU*/
 //Wires required
-wire [31:0] data_2;
+wire[31:0] data_2,extended;
+wire[31:0] alu_result;
+wire zero;
+//Sign extender
+assign extended[31:0] = {{8{instruction[15]}},instruction[15:0]};
 //Mux for ALU input
-assign data_2 = (alu_src == 1) ?  
+assign data_2 = (alu_src == 1) ? extended:read_data2; 
 //Module
-alu ALU(clk,read_data1,)
+alu ALU(clk,read_data1,data_2,alu_control,alu_result,zero);
 
 
+/*DATA MEMORY*/
+//Wires required
+wire[15:0] read_data;
+//Module
+data_memory_unit Data_memory(clk,alu_result,read_data2,mem_write,mem_read,read_data);
+
+//Mux for writing back to register file
+assign write_data = (memto_reg == 1) ? read_data:alu_result;
 
 endmodule
 

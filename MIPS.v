@@ -7,16 +7,8 @@ input reset;
 output result;
 
 /*PROGRAM COUNTER*/
-reg[15:0] pc;
-wire[15:0] pc_next;
+reg[31:0] pc = 32'd0; //initialsing pc to 0
 
-always @(posedge clk or posedge reset)
-begin
-    if(reset)
-        pc <= 16'd0;
-    else
-        pc <= pc_next;
-end
 
 /*INSTRUCTION MEMORY*/
 wire[31:0] instruction;
@@ -71,6 +63,10 @@ data_memory_unit Data_memory(clk,alu_result,read_data2,mem_write,mem_read,read_d
 
 //Mux for writing back to the register file
 assign write_data = (memto_reg == 1) ? read_data:alu_result;
+
+wire pc_nxt;
+pc pc(clk,reset,extended,branch,zero,pc,pc_nxt);
+pc = pc_nxt;
 
 endmodule
 

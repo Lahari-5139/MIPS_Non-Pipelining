@@ -12,23 +12,19 @@ always @(alu_op,posedge clk)
 begin
   case(alu_op)
     2'b00 : 
-        alu_control = 4'b0010;
+        alu_control = 4'b0010; // lw and sw
     2'b01 : 
-        alu_control = 4'b0011;
-    2'b10 :
+        alu_control = 4'b0011; // beq
+    2'b10 : // r type
         begin
-        if(func == 6'b100000)
+        if(func == 6'b100000) //add
         begin
             alu_control = 4'b0010;
         end
-        else if(func == 6'b100100)
+        else if(func == 6'b100001) // mult
         begin
-           alu_control = 4'b0000;
+            alu_control = 4'b0100;
         end
-        else if(func == 6'b100101)
-        begin
-            alu_control = 4'b0001;
-        end 
         end
   endcase
 //   alu_control = _control;

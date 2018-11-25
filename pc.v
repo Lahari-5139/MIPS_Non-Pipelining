@@ -16,7 +16,7 @@ wire[31:0] nxt;
 always @(posedge clk)
 begin
     if(reset)
-        pc <= 31'd0;
+        pc_nxt <= 32'd0;
     else
         adder1 = pc+1;
         extended = extended << 2;

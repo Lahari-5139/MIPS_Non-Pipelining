@@ -7,7 +7,10 @@ input reset;
 output result;
 
 /*PROGRAM COUNTER*/
-reg[31:0] pc = 32'd0; //initialsing pc to 0
+wire pc_nxt;
+pc pc(clk,reset,extended,branch,zero,pc,pc_nxt);
+pc = pc_nxt;
+
 
 
 /*INSTRUCTION MEMORY*/

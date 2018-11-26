@@ -24,7 +24,7 @@ begin
   #80
   reset = 0;
 
-  #200
+  #2000
   $finish;
 end
 

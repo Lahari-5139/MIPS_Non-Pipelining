@@ -39,7 +39,18 @@ main_memory[14] = 32'd3;
 main_memory[15] = 32'd1;
 main_memory[16] = 32'd2;
 main_memory[17] = 32'd3;
-main_memory[32] = 32'd11;
+
+
+main_memory[18] = 32'd1;
+main_memory[19] = 32'd2;
+main_memory[20] = 32'd3;
+main_memory[21] = 32'd1;
+main_memory[22] = 32'd2;
+main_memory[23] = 32'd3;
+main_memory[24] = 32'd1;
+main_memory[25] = 32'd2;
+main_memory[26] = 32'd3;
+
 end  
 
 //matrix A

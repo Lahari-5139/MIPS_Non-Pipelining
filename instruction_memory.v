@@ -14,8 +14,8 @@ reg[31:0] instr_memory[255:0];
 initial 
 begin
     instr_memory[0] <= 32'b10001100000000010000000000100000;
-    instr_memory[1] <= 32'b10001100000000100000000000100000;
-    instr_memory[2] <= 32'b10001100000000110000000000100000;
+    instr_memory[1] <= 32'b10001100000000100000000000010000;
+    instr_memory[2] <= 32'b10001100000000110000000000110000;
     //instr_memory[2] <= 
     // instr_memory[3] <= 
     // instr_memory[4] <= 

@@ -6,7 +6,7 @@ input [5:0] opcode;
 output reg[1:0] alu_op;
 output reg memto_reg,reg_dst,jump, branch, mem_read, mem_write, alu_src, reg_write;
 
-always @(posedge clk)  
+always @(*)  
 begin 
 
 //Default control signals

@@ -27,7 +27,6 @@ begin
         end
         end
   endcase
-//   alu_control = _control;
 end
 
 endmodule

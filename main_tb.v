@@ -17,54 +17,18 @@ initial
 begin
   $dumpfile("out.vcd");
   $dumpvars(0,main_tb);
-  
-  clk =0;
-  #40;
+
+  clk = 1;
   reset = 1;
-  clk= 1;
-//   $display("%d",result);
-//   $display("%d",pc_nxt);
-  #40;
 
+  #80
   reset = 0;
-  clk = 0;
-  #40;
-  clk = 1;
-//   $display("%d",result);
-//   $display("%d",pc_nxt);
-  #40;
-  
-  reset = 0;
-  clk = 0;
-  #40;
-  clk = 1;
-//   $display("%d",result);
-//   $display("%d",pc_nxt);
-  #40;
 
-  reset = 0;
-  clk = 0;
-  #40;
-  clk = 1;
-//   $display("%d",result);
-//   $display("%d",pc_nxt);
-  #40;
-
-  reset = 0;
-  clk = 0;
-  #40;
-  clk = 1;
-//   $display("%d",result);
-//   $display("%d",pc_nxt);
-  #40;
-
-  reset = 0;
-  clk = 0;
-  #40;
-  clk = 1;
-//   $display("%d",result);
-//   $display("%d",pc_nxt);
-  #40;
+  #200
+  $finish;
 end
+
+always
+    #10 clk = ~clk;
 
 endmodule

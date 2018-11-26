@@ -8,7 +8,7 @@ output[3:0] alu_control;
 // wire[3:0] alu_control;
 reg[3:0] alu_control;
 
-always @(alu_op,posedge clk)
+always @(posedge clk)
 begin
   case(alu_op)
     2'b00 : 

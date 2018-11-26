@@ -39,6 +39,7 @@ main_memory[14] = 32'd3;
 main_memory[15] = 32'd1;
 main_memory[16] = 32'd2;
 main_memory[17] = 32'd3;
+main_memory[32] = 32'd11;
 end  
 
 //matrix A
@@ -68,7 +69,7 @@ always @(posedge clk)
 begin  
   if(write_enable)
   begin  
-    main_memory[main_address] <= write_data;
+    main_memory[main_address] = write_data;
   end  
 end  
 

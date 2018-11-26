@@ -19,52 +19,52 @@ begin
   $dumpvars(0,main_tb);
   
   clk =0;
-  #5;
+  #40;
   reset = 1;
   clk= 1;
 //   $display("%d",result);
 //   $display("%d",pc_nxt);
-  #5;
+  #40;
 
   reset = 0;
   clk = 0;
-  #5;
+  #40;
   clk = 1;
 //   $display("%d",result);
 //   $display("%d",pc_nxt);
-  #5;
+  #40;
   
   reset = 0;
   clk = 0;
-  #5;
+  #40;
   clk = 1;
 //   $display("%d",result);
 //   $display("%d",pc_nxt);
-  #5;
+  #40;
 
   reset = 0;
   clk = 0;
-  #5;
+  #40;
   clk = 1;
 //   $display("%d",result);
 //   $display("%d",pc_nxt);
-  #5;
+  #40;
 
   reset = 0;
   clk = 0;
-  #5;
+  #40;
   clk = 1;
 //   $display("%d",result);
 //   $display("%d",pc_nxt);
-  #5;
+  #40;
 
   reset = 0;
   clk = 0;
-  #5;
+  #40;
   clk = 1;
 //   $display("%d",result);
 //   $display("%d",pc_nxt);
-  #5;
+  #40;
 end
 
 endmodule

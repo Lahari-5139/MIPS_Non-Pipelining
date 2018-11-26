@@ -24,7 +24,7 @@ reg_write = 1'b0;
     6'b000000:  begin  //control lines for add/mult instruction  
                 reg_dst = 1'b1;  
                 memto_reg = 1'b0;  
-                alu_op = 2'b00;  
+                alu_op = 2'b10;  
                 jump = 1'b0;  
                 branch = 1'b0;  
                 mem_read = 1'b0;  
@@ -47,7 +47,7 @@ reg_write = 1'b0;
     6'b100011:  begin //control lines for lw instruction 
                 reg_dst = 1'b0;  
                 memto_reg = 1'b1;  
-                alu_op = 2'b11;  
+                alu_op = 2'b00;  
                 jump = 1'b0;  
                 branch = 1'b0;  
                 mem_read = 1'b1;  
@@ -58,7 +58,7 @@ reg_write = 1'b0;
     6'b101011:  begin //control lines for sw instruction 
                 reg_dst = 1'b0;  
                 memto_reg = 1'b0;  
-                alu_op = 2'b11;  
+                alu_op = 2'b00;  
                 jump = 1'b0;  
                 branch = 1'b0;  
                 mem_read = 1'b0;  

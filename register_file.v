@@ -50,23 +50,24 @@ reg[31:0] all_registers[0:31]; //32 registers each of 32 bit(i.e 32 32bit regs)
 
 //loop for initialising the all the registers
 integer i;
+
 initial 
 begin  
   for(i = 0 ;i < 32 ;i = i + 1) 
-        all_registers[i] <= 32'd0;  
+        all_registers[i] = 32'd0;  
+
 end 
 
 always @(posedge clk)
 begin
+  read_data1 = all_registers[read_reg1];
+  read_data2 = all_registers[read_reg2];
+
   if (reg_write == 1) 
   begin
-  all_registers[write_reg] <= write_data;
+  all_registers[write_reg] = write_data;
   end
-  else
-  begin
-  read_data1 <= all_registers[read_reg1];
-  read_data2 <= all_registers[read_reg2];
-  end
+
 end
 
 //$display("%d %d",all_registers[0],all_registers[1]);

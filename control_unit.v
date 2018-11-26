@@ -1,4 +1,4 @@
-module control_unit(clk,opcode,reg_dst,memto_reg,alu_op,jump,branch,mem_read,mem_write,alu_src,reg_write,sign_or_zero);  
+module control_unit(clk,opcode,reg_dst,memto_reg,alu_op,jump,branch,mem_read,mem_write,alu_src,reg_write);  
  
 input clk;
 input [5:0] opcode;
@@ -79,6 +79,6 @@ reg_write = 1'b0;
                 end
     endcase  
 end    
-
-
+ 
 endmodule  
+

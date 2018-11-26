@@ -35,7 +35,8 @@ begin
         pc_nxt <= pc;
     end
     pc = pc_nxt;
-    //$display("%d",pc);
+    // $display("this is pc:");
+    // $display("%d",pc);
 end
 
 
@@ -44,6 +45,12 @@ end
 /*INSTRUCTION MEMORY*/
 wire[31:0] instruction;
 instruction_memory IM(clk,pc,instruction);
+// always @(posedge clk)
+// begin
+// $display("iam the instruction:");
+// $display("%d",instruction);
+// end
+
 
 /*CONTROL UNIT*/
 //Wires required
@@ -57,6 +64,7 @@ control_unit Control(clk,instruction[31:26],reg_dst,memto_reg,alu_op,jump,branch
 //Wires required
 wire[4:0] write_reg;
 wire[31:0] write_data,read_data1,read_data2;
+// wire reg_write;
 //Mux for destination register
 assign write_reg = (reg_dst == 1) ? instruction[15:11]:instruction[20:16];  
 //Module 
@@ -76,20 +84,19 @@ alu_control_unit ALU_control(clk,instruction[5:0],alu_op,alu_control);
 wire[31:0] data_2;
 wire[31:0] alu_result;
 wire zero;
+initial begin
 //Sign extender
-initial
-begin
 assign extended[31:0] = {{8{instruction[15]}},instruction[15:0]};
 end
 //Mux for ALU input
 assign data_2 = (alu_src == 1) ? extended:read_data2; 
 //Module
 alu ALU(clk,read_data1,data_2,alu_control,alu_result,zero);
-always @(posedge clk)
-begin
-$display("iam alu_result");
-$display("%d",alu_result);
-end
+// always @(posedge clk)
+// begin
+// $display("iam alu_result");
+// $display("%d",alu_result);
+// end
 
 
 /*DATA MEMORY*/

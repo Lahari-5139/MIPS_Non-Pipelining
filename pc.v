@@ -1,3 +1,7 @@
+
+/*THIS MODULE IS NOT REQUIRED*/
+
+
 // module pc(clk,reset,extended,branch,zero_flag,pc,pc_nxt);
 
 // input clk;
@@ -15,9 +19,9 @@
 
 // always @(posedge clk)
 // begin
-//     if(reset)
-//         pc_nxt <= 32'd0;
-//     else
+//     //if(reset)
+//         //pc_nxt <= 32'd0;
+//    // else
 //         adder1 = pc+1;
 //         extended = extended << 2;
 //         adder2 = adder1+extended;
@@ -26,8 +30,8 @@
 //         pc = sel ? adder2 : adder1;
 //         pc_nxt <= pc;
         
-// end
-// endmodule
+// //end
+// //endmodule
 
 
 /*NO PC MODULE. ONLY IN MIPS.v*/

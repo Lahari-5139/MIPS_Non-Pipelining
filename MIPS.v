@@ -3,22 +3,18 @@ module mips(clk,reset,pc_nxt,result);
 
 input clk;
 input reset;
-
 output[31:0] result;
 output[31:0] pc_nxt;
-
 reg[31:0] result;
+
+
 /*PROGRAM COUNTER*/
-// wire[31:0] pc_nxt;
 reg[31:0] pc;
 reg[31:0] extended;
-// pc p_c(clk,reset,extended,branch,zero,pc,pc_nxt);
-// assign pc = pc_nxt;
 reg[31:0] adder1;
 reg[31:0] adder2;
 reg sel;
 reg[31:0] pc_nxt;
-
 always @(posedge clk)
 begin
     if(reset)
@@ -37,21 +33,12 @@ begin
         pc_nxt = pc;
     end
     pc = pc_nxt;
-    // $display("this is pc:");
-    // $display("%d",pc);
 end
-
-
 
 
 /*INSTRUCTION MEMORY*/
 wire[31:0] instruction;
 instruction_memory IM(clk,pc,instruction);
-// always @(*)
-// begin
-// $display("iam the instruction:");
-// $display("%d",instruction);
-// end
 
 
 /*CONTROL UNIT*/
@@ -60,17 +47,12 @@ wire reg_dst, memto_reg, jump, branch, mem_read, mem_write, alu_src, reg_write;
 wire[1:0] alu_op;
 //Module
 control_unit Control(clk,instruction[31:26],reg_dst,memto_reg,alu_op,jump,branch,mem_read,mem_write,alu_src,reg_write);  
-// always @(*)
-// begin
-// $display("iam the control unit:");
-// $display("%d",reg_dst);
-// end
+
 
 /*REGISTER FILE*/
 //Wires required
 wire[4:0] write_reg;
 wire[31:0] write_data,read_data1,read_data2;
-// wire reg_write;
 //Mux for destination register
 assign write_reg = (reg_dst == 1) ? instruction[15:11]:instruction[20:16];  
 //Module 
@@ -79,7 +61,6 @@ register_file Registers(clk,instruction[25:21],instruction[20:16],write_reg,writ
 
 /*ALU CONTROL*/
 //Wires required
-// wire[1:0] alu_op;
 wire[3:0] alu_control;
 //Module
 alu_control_unit ALU_control(clk,instruction[5:0],alu_op,alu_control);
@@ -99,11 +80,6 @@ end
 assign data_2 = (alu_src == 1) ? extended:read_data2; 
 //Module
 alu ALU(clk,read_data1,data_2,alu_control,alu_result,zero);
-// always @(posedge clk)
-// begin
-// $display("iam alu_result");
-// $display("%d",alu_result);
-// end
 
 
 /*DATA MEMORY*/
@@ -111,17 +87,8 @@ alu ALU(clk,read_data1,data_2,alu_control,alu_result,zero);
 wire[31:0] read_data;
 //Module
 data_memory_unit Data_memory(clk,alu_result,read_data2,mem_write,mem_read,read_data);
-
 //Mux for writing back to the register file
 assign write_data = (memto_reg == 1) ? read_data:alu_result;
 
-// always @(*)
-// begin
-// result = alu_result;
-// $display("final result %d",result);
-// end
-/*wire pc_nxt;
-pc pc(clk,reset,extended,branch,zero,pc,pc_nxt);
-pc = pc_nxt;*/
 
 endmodule

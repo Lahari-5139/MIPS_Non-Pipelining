@@ -17,13 +17,15 @@ initial
 begin
   $dumpfile("out.vcd");
   $dumpvars(0,main_tb);
-
+    clk =0 ;
   clk = 1;
   reset = 1;
 
   #80
   reset = 0;
-
+// clk =0;
+// #80;
+// clk =1;
   #2000
   $finish;
 end

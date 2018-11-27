@@ -46,33 +46,61 @@ wire[4:0] write_reg;
 // reg[31:0] z6;
 // reg[31:0] z7;
 
-reg[31:0] all_registers[0:31]; //32 registers each of 32 bit(i.e 32 32bit regs)
+reg[31:0] all_registers[0:128]; //32 registers each of 32 bit(i.e 32 32bit regs)
 
 //loop for initialising the all the registers
 integer i;
-
 initial 
 begin  
-  for(i = 0 ;i < 32 ;i = i + 1) 
-        all_registers[i] = 32'd0;  
-
+  for(i = 0 ;i < 128 ;i = i + 1) 
+      all_registers[i] <= 32'd0;  
 end 
 
-always @(posedge clk)
+always @(*)
 begin
+  begin
   read_data1 = all_registers[read_reg1];
   read_data2 = all_registers[read_reg2];
-
+  end
   if (reg_write == 1) 
   begin
   all_registers[write_reg] = write_data;
   end
-
+  
 end
 
 //$display("%d %d",all_registers[0],all_registers[1]);
 
-endmodule
+always @(*)
+begin
+// $display("reg 0 %d",all_registers[0]);
+$display("\n");
+$display("reg 1 %d",all_registers[1]);
+$display("reg 2 %d",all_registers[2]);
+$display("reg 3 %d",all_registers[3]);
+$display("reg 4 %d",all_registers[4]);
+$display("reg 5 %d",all_registers[5]);
+$display("reg 6 %d",all_registers[6]);
+$display("reg 7 %d",all_registers[7]);
+$display("reg 8 %d",all_registers[8]);
+// $display("reg 9 %d",all_registers[9]);
+// $display("reg 10 %d",all_registers[10]);
+// $display("reg 11 %d",all_registers[11]);
+// $display("reg 12 %d",all_registers[12]);
+// $display("reg 13 %d",all_registers[13]);
+// $display("reg 14 %d",all_registers[14]);
+// $display("reg 15 %d",all_registers[15]);
+// $display("reg 16 %d",all_registers[16]);
+// $display("reg 17 %d",all_registers[17]);
+
+$display("\n");
+$display("reg 20 %d",all_registers[20]);
+$display("reg 21 %d",all_registers[21]);
+$display("reg 22 %d",all_registers[22]);
+$display("reg 23 %d",all_registers[23]);
+
+end
+ endmodule
 
 
 
@@ -94,4 +122,3 @@ endmodule
 //         endcase
 //     end
 // endmodule
-
